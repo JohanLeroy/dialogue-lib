@@ -9,12 +9,12 @@
 ## 📦 Installation
 
 ```bash
-npm install @johanleroy/dialogue-lib
+npm install @angular/animations @johanleroy/dialogue-lib
 ```
 
 # 🚀 Utilisation de base
 
-### 1. Import du provider dans main.ts
+### 1. Import du provider dans app.config.ts
 
 ```TS
 import { bootstrapApplication } from '@angular/platform-browser';
@@ -40,61 +40,45 @@ export class HomeComponent {
     
     private dialogue = inject(DialogueService);
 
-    showAlert() {
+    showSuccess() {
         this.dialogue.confirm({
-            title: 'Attention !',
-            message: 'Cette action est irréversible.',
-            icon: 'warning',
-            timeout: 5000
+            type: 'success',
+            title: 'Bravo !',
+            text: 'Vous avez réussie',
+            confirmText: 'Okay !',
+            timeout: 800,
+            backdropOpacity: 0.5,
         });
     }
 
-    async showConfirm() {
-        const confirmed = await this.dialogue.confirm({
-            title: 'Supprimer l’élément ?',
-            message: 'Cette action ne peut pas être annulée.',
-            icon: 'trash'
+    showError() {
+        this.dialogue.confirm({
+            type: 'error',
+            title: 'Aïeeeee !',
+            text: 'Une erreur est survenue',
+            confirmText: 'Mince !',
+            timeout: 800,
+            backdropOpacity: 0.5,
         });
-
-        if (confirmed) {
-            // Suppression...
-        }
     }
+
+    showQuestion() {
+        this.dialogue.confirm({
+            type: 'question',
+            title: 'Êtes-vous sûr ?',
+            text: 'Supprimer définitivement l\'utilisateur ?',
+            confirmText: 'Oui, supprimer',
+            cancelText: 'Annuler',
+            backdropOpacity: 0.5,
+        }).then((res: boolean) => {
+            if (res) {
+                this.deleteUser(id);
+            }
+        });
+    }
+    
 }
 ```
-
-# ⚙️ API
-
-- alert(options: DialogueOptions): void 
-- title (string) – Titre de l’alerte 
-- message (string) – Message affiché 
-- icon? (string) – Nom de l’icône (ex : info, warning, check, trash)
-- timeout? (number) – Temps avant fermeture automatique (en ms)
-- backdrop? (boolean) – Affiche un fond sombre (par défaut : true)
-- confirm(options: DialogueOptions): Promise<boolean>
-- Comme alert, mais avec boutons Oui / Non 
-- Retourne true si l'utilisateur confirme.
-
-# 🎨 Personnalisation
-
-Tu peux override les styles avec Tailwind, ou créer un thème :
-
-```CSS
-/* styles.css */
-.dialogue-container {
-    @apply bg-white rounded-xl shadow-xl p-4;
-}
-.dialogue-icon-warning {
-    @apply text-yellow-500;
-}
-```
-
-# 📁 Structure recommandée
-
-- src/lib/dialogue.service.ts : gestion centrale 
-- src/components/alert.component.ts : composant standalone 
-- src/interfaces/options.ts : interface DialogueOptions 
-- src/styles/dialogue.css : classes Tailwind par défaut
 
 # 👨‍💻 Contribution
 

@@ -1,6 +1,6 @@
 {
   "name": "@johanleroy/dialogue-lib",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Système de dialogue Angular standalone avec alertes personnalisables",
   "author": "Johan Leroy",
   "license": "MIT",
