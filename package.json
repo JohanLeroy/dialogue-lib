@@ -1,0 +1,20 @@
+{
+  "name": "dialogue-lib",
+  "version": "1.0.0",
+  "description": "Système de dialogue Angular standalone avec alertes personnalisables",
+  "author": "Johan Leroy",
+  "license": "MIT",
+  "devDependencies": {
+    "@angular/compiler-cli": "^20.0.0",
+    "ng-packagr": "next",
+    "typescript": "~5.8.0"
+  },
+  "peerDependencies": {
+    "@angular/core": "^20.0.0",
+    "@angular/common": "^20.0.0",
+    "@angular/animations": "^20.0.0"
+  },
+  "scripts": {
+    "build": "ng-packagr -p ng-package.json"
+  }
+}

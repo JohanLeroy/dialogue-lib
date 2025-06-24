@@ -1,0 +1,23 @@
+@switch (type) {
+  @case ('error') {
+    <svg class="w-16 h-16 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-4h2v2h-2v-2zm0-8h2v6h-2V6z"
+            clip-rule="evenodd" />
+    </svg>
+  }
+  @case ('question') {
+    <svg class="w-16 h-16 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd"
+            d="M8.257 3.099c.764-1.36 2.722-1.36 3.486 0l5.451 9.713c.75 1.337-.213 3.038-1.743 3.038H4.549c-1.53 0-2.493-1.7-1.743-3.038l5.451-9.713zM11 13a1 1 0 10-2 0 1 1 0 002 0zm-1-2a1 1 0 01-1-1V7a1 1 0 112 0v3a1 1 0 01-1 1z"
+            clip-rule="evenodd" />
+    </svg>
+  }
+  @default {
+    <svg class="w-16 h-16 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.707a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+            clip-rule="evenodd" />
+    </svg>
+  }
+}

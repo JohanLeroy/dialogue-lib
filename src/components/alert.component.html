@@ -1,0 +1,34 @@
+@if (alertData()) {
+  <div class="fixed inset-0 z-500 flex justify-center items-center"
+       [ngStyle]="{ 'background-color': 'rgba(0, 0, 0, ' + (alertData()?.backdropOpacity ?? 0.1) + ')' }"
+       @fade>
+    <div class="w-full max-w-lg p-5 bg-white rounded-xl shadow-lg relative text-center animate-scaleIn">
+      <div class="p-5 flex flex-col items-center justify-center">
+        <app-alert-icon [type]="(alertData()?.type ?? 'success')" />
+        <h2 class="text-xl font-bold py-4">{{ alertData()?.title }}</h2>
+        <p class="text-sm text-gray-500 px-8">{{ alertData()?.text }}</p>
+      </div>
+      <div class="p-3 mt-2 text-center space-x-4">
+        @if (alertData()?.type === 'question') {
+          <button class="bg-white px-5 py-2 text-sm border text-gray-600 rounded-full hover:bg-gray-100 cursor-pointer"
+                  (click)="cancel()">
+            {{ alertData()?.cancelText || 'Annuler' }}
+          </button>
+        }
+        <button
+          class="px-5 py-2 text-sm rounded-full text-white shadow-sm cursor-pointer"
+          [ngClass]="{
+            'bg-green-500 hover:bg-green-600': alertData()?.type === 'success',
+            'bg-red-500 hover:bg-red-600': alertData()?.type === 'error',
+            'bg-yellow-500 hover:bg-yellow-600': alertData()?.type === 'question'
+          }"
+          (click)="confirm()">
+          {{ alertData()?.confirmText }}
+          @if (countdown() !== null) {
+            ({{ countdown() }})
+          }
+        </button>
+      </div>
+    </div>
+  </div>
+}
