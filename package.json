@@ -1,9 +1,14 @@
 {
-  "name": "dialogue-lib",
+  "name": "@johanleroy/dialogue-lib",
   "version": "1.0.0",
   "description": "Système de dialogue Angular standalone avec alertes personnalisables",
   "author": "Johan Leroy",
   "license": "MIT",
+  "keywords": ["angular", "dialogue", "alert", "confirm", "standalone"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JohanLeroy/dialogue-lib.git"
+  },
   "devDependencies": {
     "@angular/compiler-cli": "^20.0.0",
     "ng-packagr": "next",
